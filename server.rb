@@ -17,12 +17,6 @@ class Routes < WEBrick::HTTPServlet::AbstractServlet
         end
     end
 
-    def html_file(file) 
-        path = File.join(__dir__, 'public', file)    
-        html = ERB.new(File.open(path).read).result
-        return html
-    end
-
     def do_POST(request, response)
         case request.path
         when "/charge" 
@@ -58,6 +52,13 @@ class Routes < WEBrick::HTTPServlet::AbstractServlet
             response.status = 400
             response.body = "Route not found"
         end
+    end
+
+    private 
+    def html_file(file) 
+        path = File.join(__dir__, 'public', file)    
+        html = ERB.new(File.open(path).read).result
+        return html
     end
 
 end
