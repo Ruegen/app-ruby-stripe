@@ -29,7 +29,7 @@ class Routes < WEBrick::HTTPServlet::AbstractServlet
             stripe_response = Stripe::Charge.create({
                 :amount => 2000, #dollars in cents
                 :currency => "aud", # Australia currency
-                :source => "tok_amex", # obtained with Stripe.js
+                :source => token, # obtained with Stripe.js
                 :description => "Charge for ruegen.aschenbrenner@coderacademy.edu.au"
             })
 
